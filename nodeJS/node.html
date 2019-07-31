@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+ 
+    <div class="container">
+        <div class="btn" onclick="getText()">获取数据</div>
+        <div class="text"></div>
+    </div>
+ 
+</body>
+ 
+<script type="text/javascript">
+ var https = new XMLHttpRequest() ;
+    function getText(){
+       
+       https.open('post','http://127.24.31.193:10013/',true);
+       https.send(null);
+
+      https.onreadystatechange = function(){
+
+        if(Object.is(https.readyState,4)){
+            let test = document.querySelector('.text');
+            test.innerHTML = https.responseText;
+
+            let cookie = document.cookie;
+            let cookieJosn = cookie.split("; ");        
+
+            console.log(cookieJosn)
+        }
+        
+      }
+       
+
+    }
+
+   
+</script>
+ 
